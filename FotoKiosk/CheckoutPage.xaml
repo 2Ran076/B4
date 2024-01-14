@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="FotoKiosk.CheckoutPage"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:FotoKiosk"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <ScrollViewer>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*" />
+                <ColumnDefinition Width="1*" />
+            </Grid.ColumnDefinitions>
+            <StackPanel VerticalAlignment="Center">
+                <TextBlock Text="Foto-id:"/>
+                <TextBox x:Name="fid" Margin="0 0 0 30"></TextBox>
+                <TextBlock Text="Product:"/>
+                <ComboBox x:Name="choise" Margin="0 0 0 30">
+                    <ComboBoxItem Content="Foto 10x15"/>
+                    <ComboBoxItem Content="Foto 30x20"/>
+                    <ComboBoxItem Content="Mok met foto"/>
+                    <ComboBoxItem Content="Sleutelhanger"/>
+                    <ComboBoxItem Content="T-shirt" />  
+                </ComboBox>
+                <TextBlock Text="Aantal:"/>
+                <TextBox x:Name="amount" Margin="0 0 0 30"></TextBox>
+                <StackPanel Margin="0 0 0 30">
+                    <Button x:Name="button1">Toevoegen</Button>
+                    <Button x:Name="button2">Resetten</Button>
+                </StackPanel>
+                <StackPanel BorderBrush="Black" BorderThickness="1">
+                    <TextBlock Margin="10 10 10 10" Text="Eindbedrag"/>
+                    <TextBlock Margin="10 0 10 10" x:Name="total" Text="€"/>
+                </StackPanel>
+            </StackPanel>
+
+
+            <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="50 0 0 0">
+                <TextBlock Text="Prijzen" FontWeight="Bold"/>
+                <StackPanel Margin="10 0 0 0" Grid.Column="1">
+                    <TextBlock Text="Foto 10x15                 €2.55"/>
+                    <TextBlock Text="Foto 20x30                 €4.95"/>
+                    <TextBlock Text="Mok met foto               €9.95"/>
+                    <TextBlock Text="Sleutelhanger              €6.12"/>
+                    <TextBlock Text="T-shirt                    €11.99"/>
+                </StackPanel>
+            </StackPanel>
+            
+
+        </Grid>
+    </ScrollViewer>
+</UserControl>

@@ -1,0 +1,66 @@
+<Page
+    x:Class="FotoKiosk.ReportsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:FotoKiosk"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <ScrollViewer>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal" Padding="30"  x:Name="spReport" VerticalAlignment="Center">
+                <TextBlock FontSize="15">Open een .csv bestand met verkoop cijfers: </TextBlock>
+                <Button Click="ReportButton" Content="Kies CSV bestand" Margin="10,0,0,0"/>
+                <TextBlock x:Name="tbFileStatus" Margin="5" FontSize="15"/>
+            </StackPanel>
+
+            <ListView x:Name="lvReport" Grid.Row="1">
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="local:GlobaalReport">
+                        <StackPanel Margin="20">
+                            <StackPanel Orientation="Horizontal" Margin="20">
+                                <StackPanel Width="700">
+                                    <TextBlock FontSize="15">
+                                                <Run FontWeight="Bold">Dagrapportage</Run>
+                                                <Run FontWeight="Bold" Text="{x:Bind Day}"/>
+                                    </TextBlock>
+                                    <TextBlock FontSize="15">
+                                                <Run FontWeight="Bold">Ratio order / Bezoekers:</Run>
+                                                    <LineBreak/>
+                                                <Run Text="{x:Bind PurchaseRatio}"/>
+                                                <Run>%</Run>
+                                    </TextBlock>
+                                    <TextBlock FontSize="15">
+                                                <Run FontWeight="Bold">Aantal orders:</Run>
+                                                    <LineBreak/>
+                                                <Run Text="{x:Bind OrderCount}"/>
+                                    </TextBlock>
+                                    <TextBlock FontSize="15">
+                                                <Run FontWeight="Bold">Aantal producten verkocht:</Run>
+                                                   <LineBreak/> 
+                                                <Run Text="{x:Bind Amount}"/>
+                                    </TextBlock>
+                                    <TextBlock FontSize="15">
+                                                <Run FontWeight="Bold">Totale omzet:</Run>
+                                                    <LineBreak/>
+                                                <Run>$</Run>
+                                                <Run Text="{x:Bind TotalPrice}"/>
+                                    </TextBlock>
+                                </StackPanel>
+                                <Button x:Name="saveRapport" Click="saveRapport_Click">Rapport opslaan</Button>
+                                <TextBlock x:Name="saveMsg"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </ScrollViewer>
+</Page>
